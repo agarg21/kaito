@@ -225,7 +225,7 @@ async def test_all_choices_including_non_text_choices_are_validated(choices):
     "invalid",
     [
         b"data:\xff\n\n",
-        b"data:" + b"x" * DEFAULT_MAX_EVENT_BYTES,
+        pytest.param(b"data:" + b"x" * DEFAULT_MAX_EVENT_BYTES, id="data:x*DEFAULT_MAX_EVENT_BYTES"),
         b"data: unfinished",
         b"data: unfinished\r",
         b"data: \xe4\xbd",
